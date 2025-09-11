@@ -44,8 +44,9 @@ DualGPT-AB allows the generation of antibody CDRH3 sequences using a trained Con
 The Prior GPT is trained on a CDRH3 dataset labeled with a limited set of developability properties:  
 - **FvNetCharge** 
 - **FvCSP** 
-- **HISum** 
-  By modeling the **relationship between sequences and these properties**, the Prior GPT learns how property conditions can guide sequence generation.
+- **HISum**
+
+By modeling the relationship between sequences and these properties, the Prior GPT learns how property conditions can guide sequence generation.
 
 ```
 python train_prior.py --n_epochs 10 --lr 1e-3 --seed 42 --max_len 14 --con_num 3 --output_dir <output_model_params_path>
@@ -84,6 +85,7 @@ The datasets related to this study can be accessed at [Zenodo: https://doi.org/1
 - The processed datasets used to train the Prior GPT.  
 
 You can download these files and place them in the `data/OAS` directory.
+
 
 
 

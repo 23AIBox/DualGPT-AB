@@ -48,6 +48,10 @@ The Prior GPT is trained on a CDRH3 dataset labeled with a limited set of develo
 
 By modeling the relationship between sequences and these properties, the Prior GPT learns how property conditions can guide sequence generation.
 
+You should first download the dataset and place it under `data/OAS/` as  
+`data/OAS/oas_train.csv` and `data/OAS/oas_test.csv`.
+
+To train the Prior GPT, run the following command:
 ```
 python train_prior.py --n_epochs 10 --lr 1e-3 --seed 42 --max_len 14 --con_num 3 --output_dir <output_model_params_path>
 ```
@@ -85,6 +89,7 @@ The datasets related to this study can be accessed at [Zenodo: https://doi.org/1
 - The processed datasets used to train the Prior GPT.  
 
 You can download these files and place them in the `data/OAS` directory.
+
 
 
 

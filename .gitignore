@@ -1,0 +1,47 @@
+# IDE 配置
+.vscode/
+
+# 脚本/临时
+0_preprocess.py
+nohup.out
+tmp.txt
+tmp/
+
+# 数据 & 结果
+2000_step_csv/
+HISum_modify/
+ab-gen/
+all_methods/
+bin/
+candidate/
+data/
+draw/
+draw.ipynb
+ds.ipynb
+eval/
+fig.html
+fig.pdf
+figs/
+foldx/
+generate.py
+mHER_H3_AgPos_1.csv
+mHER_H3_AgPos_ori.csv
+method_p_values.csv
+model/
+new_huafen/
+prior_final.pdf
+random_100/
+results/
+sup/
+train_agent.py
+train_prior_2.py
+utils/
+weight_new/
+wkhtmltopdf_tmp/
+wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+
+# 论文/笔记
+antibody_tradeoffs.pdf
+att_weight.ipynb
+agent/
+oas-cdr_h3-train.csv

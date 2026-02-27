@@ -6,7 +6,6 @@ import pandas as pd
 from model.minGPT import load_gpt_model
 from model.sampler import sample
 import math
-import os
 from utils.dataset_PriorGPT import AASeqDictionary_con
 from utils.dataset_EnhancedGPT import AASeqDictionary_con_2
 

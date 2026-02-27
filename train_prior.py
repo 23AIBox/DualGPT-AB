@@ -64,7 +64,7 @@ def train(training_set, validation_set, column_cdrs,column_cons,output_dir, n_ep
 	trainer = Trainer(model, tconf)
 	trainer.fit(train_set, test_set,
 				n_epochs=n_epochs, batch_size=batch_size, num_workers=num_workers, save_model=True)
-	return trainer. model
+	return trainer.model
 
 
 def main(args):
@@ -107,9 +107,9 @@ def parse_args():
 	optional.add_argument('--n_embd', default=256, type=int, help='Number of embeddings for GPT model, default=256')
 	optional.add_argument('--n_head', default=8, type=int, help='Number of attention heads for GPT model, default=8')
 	optional.add_argument('--device', default='cuda', type=str, help='Use cuda or cpu, default=cuda')
-	optional.add_argument('--max_len', default=14, type=int, help='Max length of a sequence, default=100')
+	optional.add_argument('--max_len', default=14, type=int, help='Max length of a sequence, default=14')
 	optional.add_argument('--model_path', default=None, type=str, help='Prior model path to fine-tune')
-	optional.add_argument('--con_num', default=3, type=int, help='con num')
+	optional.add_argument('--con_num', default=3, type=int, help='condition num')
 	optional.add_argument('--seed', default=42, type=int, help='random seed')
 	return parser.parse_args()
 

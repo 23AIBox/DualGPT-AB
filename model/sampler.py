@@ -132,10 +132,12 @@ def sample(voc:AASeqDictionary_con, model: GPT, num_to_sample=10000, device='cpu
     weight.append(1.0 / 7)
     weight.append(1.0 / 7)
     weight = np.array(weight)
-    scoring_function = ScoringFunctions(template=herceptin,
+    scoring_function2 = ScoringFunctions(template=herceptin,
                                         scoring_func_names=['HER2', 'MHC2', 'FvNetCharge', 'FvCSP', 'HISum'],
                                         weights=weight)
-
+    scoring_function1 = ScoringFunctions(template=herceptin,
+                                    scoring_func_names=['FvNetCharge', 'FvCSP', 'HISum'],
+                                    weights=np.array([1.0 / 3, 1.0 / 3, 1.0 / 3]))
     model.eval()
     s=set()
     with torch.no_grad():
@@ -157,15 +159,22 @@ def sample(voc:AASeqDictionary_con, model: GPT, num_to_sample=10000, device='cpu
             for x in cdrs:
                 if x not in s:
                     s.add(x)
+                    print(x)
                     new_list.append(x)
-            score_df = scoring_function.scores(new_list, i, 'sum')
-            score_df['is_success'] = score_df.apply(calculate_is_success_1, axis=1)
+            score_df = pd.DataFrame(new_list)
+            if con_num==3:
+                score_df = scoring_function1.scores(new_list, i, 'sum')
+            elif con_num==5:
+                score_df = scoring_function2.scores(new_list, i, 'sum')
+                score_df['is_success'] = score_df.apply(calculate_is_success_1, axis=1)
             final_df = pd.concat([final_df, score_df], ignore_index=True)
+            final_df.to_csv(out_path, index=False)
             remaining_samples = remaining_samples-len(new_list)
             if remaining_samples<=0:
                 break
             i+=1
-    
+    print(len(final_df))
+    print(num_to_sample)
     num_to_discard = len(final_df) - num_to_sample
     discarded_df = final_df.sample(n=num_to_discard, random_state=10001)
     remaining_df = final_df.drop(discarded_df.index)
